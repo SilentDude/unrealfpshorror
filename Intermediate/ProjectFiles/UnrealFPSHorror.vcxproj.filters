@@ -66,4 +66,14 @@
       <Filter>Source\UnrealFPSHorror</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\UnrealFPSHorror\Beast.h">
+      <Filter>Source\UnrealFPSHorror</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\UnrealFPSHorror\Beast.cpp">
+      <Filter>Source\UnrealFPSHorror</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

@@ -123,8 +123,6 @@ void AUnrealFPSHorrorCharacter::SetupPlayerInputComponent(class UInputComponent*
 	// Enable touchscreen input
 	EnableTouchscreenMovement(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AUnrealFPSHorrorCharacter::OnResetVR);
-
 	// Bind movement events
 	PlayerInputComponent->BindAxis("MoveForward", this, &AUnrealFPSHorrorCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AUnrealFPSHorrorCharacter::MoveRight);
@@ -184,11 +182,6 @@ void AUnrealFPSHorrorCharacter::OnFire()
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
-}
-
-void AUnrealFPSHorrorCharacter::OnResetVR()
-{
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
 
 void AUnrealFPSHorrorCharacter::BeginTouch(const ETouchIndex::Type FingerIndex, const FVector Location)
