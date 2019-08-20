@@ -1,0 +1,10 @@
+{
+	"files.exclude": {
+		"C:/Users/Maciek/Desktop/Projekty/UnrealFPSHorror/.git": true,
+		"C:/Users/Maciek/Desktop/Projekty/UnrealFPSHorror/.vs": true,
+		"C:/Users/Maciek/Desktop/Projekty/UnrealFPSHorror/.vscode": true,
+		"C:/Users/Maciek/Desktop/Projekty/UnrealFPSHorror/Content": true,
+		"C:/Users/Maciek/Desktop/Projekty/UnrealFPSHorror/Intermediate": true,
+		"C:/Users/Maciek/Desktop/Projekty/UnrealFPSHorror/Saved": true
+	}
+}

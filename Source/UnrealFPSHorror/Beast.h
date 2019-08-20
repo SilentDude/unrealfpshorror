@@ -15,7 +15,7 @@ class UNREALFPSHORROR_API ABeast : public ACharacter
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, Category = "Health")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 		int32 HP = 100;
 
 	// Sets default values for this character's properties
