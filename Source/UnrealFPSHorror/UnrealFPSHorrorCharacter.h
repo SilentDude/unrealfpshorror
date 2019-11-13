@@ -4,15 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "AIModule/Classes/GenericTeamAgentInterface.h"
 #include "UnrealFPSHorrorCharacter.generated.h"
 
 class UInputComponent;
 
 UCLASS(config=Game)
-class AUnrealFPSHorrorCharacter : public ACharacter
+class AUnrealFPSHorrorCharacter : public ACharacter, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 
+	FGenericTeamId TeamId;
+ 
+    virtual FGenericTeamId GetGenericTeamId() const override;
+ 
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
 	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
 	class USkeletalMeshComponent* Mesh1P;

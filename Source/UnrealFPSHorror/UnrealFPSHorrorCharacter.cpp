@@ -8,8 +8,15 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/GameEngine.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
+
+#if UE_BUILD_DEBUG || UE_BUILD_DEVELOPMENT
+    #define ABC(x) GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, x);
+	#else
+	#define ABC(x)
+	#endif
 
 //////////////////////////////////////////////////////////////////////////
 // AUnrealFPSHorrorCharacter
@@ -52,6 +59,13 @@ AUnrealFPSHorrorCharacter::AUnrealFPSHorrorCharacter()
 
 	// Default offset from the character location for projectiles to spawn
 	GunOffset = FVector(100.0f, 0.0f, 10.0f);
+
+	TeamId = FGenericTeamId(0);
+}
+
+FGenericTeamId AUnrealFPSHorrorCharacter::GetGenericTeamId() const
+{
+	return TeamId;
 }
 
 void AUnrealFPSHorrorCharacter::BeginPlay()
@@ -61,8 +75,9 @@ void AUnrealFPSHorrorCharacter::BeginPlay()
 
 	//Attach gun mesh component to Skeleton, doing it here because the skeleton is not yet created in the constructor
 	FP_Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-
-		Mesh1P->SetHiddenInGame(false, true);
+	//Mesh1P->SetHiddenInGame(false, true);
+	
+	ABC(FString::FromInt(GetGenericTeamId().GetId()));
 }
 
 //////////////////////////////////////////////////////////////////////////

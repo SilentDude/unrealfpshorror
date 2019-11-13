@@ -7,12 +7,17 @@
 #include "CoreMinimal.h"
 #include "TimerManager.h"
 #include "GameFramework/Character.h"
+#include "AIModule/Classes/GenericTeamAgentInterface.h"
 #include "Beast.generated.h"
 
 UCLASS()
-class UNREALFPSHORROR_API ABeast : public ACharacter
+class UNREALFPSHORROR_API ABeast : public ACharacter, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
+
+	FGenericTeamId TeamId;
+ 
+    virtual FGenericTeamId GetGenericTeamId() const override;
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
