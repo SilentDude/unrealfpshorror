@@ -6,9 +6,11 @@
 #include "Runtime/Engine/Classes/GameFramework/Controller.h"
 #include "CoreMinimal.h"
 #include "TimerManager.h"
+#include "UnrealNetwork.h"
 #include "GameFramework/Character.h"
 #include "AIModule/Classes/GenericTeamAgentInterface.h"
 #include "Beast.generated.h"
+
 
 UCLASS()
 class UNREALFPSHORROR_API ABeast : public ACharacter, public IGenericTeamAgentInterface
@@ -20,7 +22,9 @@ class UNREALFPSHORROR_API ABeast : public ACharacter, public IGenericTeamAgentIn
     virtual FGenericTeamId GetGenericTeamId() const override;
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
+	// UPROPERTY(Replicated)
+    // AActor * Owner;
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite, Category = "Health")
 		int32 HP = 100;
 
 	// Sets default values for this character's properties

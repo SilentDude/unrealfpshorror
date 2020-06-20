@@ -19,7 +19,7 @@ class AUnrealFPSHorrorCharacter : public ACharacter, public IGenericTeamAgentInt
     virtual FGenericTeamId GetGenericTeamId() const override;
  
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
-	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh, meta = (AllowPrivateAccess = "true"))
 	class USkeletalMeshComponent* Mesh1P;
 
 	/** Gun mesh: 1st person view (seen only by self) */

@@ -1,6 +1,8 @@
 /.vs
 /Binaries/*
 
+/Build
+
 !/Saved
 /Saved/*
 !/Saved/Config
@@ -8,3 +10,6 @@
 !/Intermediate
 /Intermediate/*
 !/Intermediate/ProjectFiles
+
+/UnrealFPSHorror.sln
+

@@ -10,14 +10,6 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/GameEngine.h"
 
-DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
-
-#if UE_BUILD_DEBUG || UE_BUILD_DEVELOPMENT
-    #define ABC(x) GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, x);
-	#else
-	#define ABC(x)
-	#endif
-
 //////////////////////////////////////////////////////////////////////////
 // AUnrealFPSHorrorCharacter
 
@@ -33,7 +25,7 @@ AUnrealFPSHorrorCharacter::AUnrealFPSHorrorCharacter()
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
-	FirstPersonCameraComponent->RelativeLocation = FVector(-39.56f, 1.75f, 64.f); // Position the camera
+	FirstPersonCameraComponent->SetRelativeLocation(FVector(-39.56f, 1.75f, 64.f)); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
@@ -42,8 +34,8 @@ AUnrealFPSHorrorCharacter::AUnrealFPSHorrorCharacter()
 	Mesh1P->SetupAttachment(FirstPersonCameraComponent);
 	Mesh1P->bCastDynamicShadow = false;
 	Mesh1P->CastShadow = false;
-	Mesh1P->RelativeRotation = FRotator(1.9f, -19.19f, 5.2f);
-	Mesh1P->RelativeLocation = FVector(-0.5f, -4.4f, -155.7f);
+	Mesh1P->SetRelativeRotation(FRotator(1.9f, -19.19f, 5.2f));
+	Mesh1P->SetRelativeLocation(FVector(-0.5f, -4.4f, -155.7f));
 
 	// Create a gun mesh component
 	FP_Gun = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FP_Gun"));
@@ -76,8 +68,6 @@ void AUnrealFPSHorrorCharacter::BeginPlay()
 	//Attach gun mesh component to Skeleton, doing it here because the skeleton is not yet created in the constructor
 	FP_Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 	//Mesh1P->SetHiddenInGame(false, true);
-	
-	ABC(FString::FromInt(GetGenericTeamId().GetId()));
 }
 
 //////////////////////////////////////////////////////////////////////////

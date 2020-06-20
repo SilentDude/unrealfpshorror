@@ -9,6 +9,8 @@ ABeast::ABeast()
 	PrimaryActorTick.bCanEverTick = true;
 
 	TeamId = FGenericTeamId(1);
+
+	bReplicates = true;
 }
 
 FGenericTeamId ABeast::GetGenericTeamId() const
@@ -54,4 +56,9 @@ float ABeast::TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, c
 	}
 
 	return ActualDamage;
+}
+
+void ABeast::GetLifetimeReplicatedProps( TArray< FLifetimeProperty > & OutLifetimeProps ) const
+{
+    DOREPLIFETIME( ABeast, HP );
 }
